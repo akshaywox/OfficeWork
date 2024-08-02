@@ -30,7 +30,11 @@ module.exports = {
       animation: {
         rotateAnimation: 'rotateAnimation 1s forwards',
       },
-    },
+      fontFamily: {
+        poppins: ["NeuMon", "NeueMon"],
+      },
   },
   plugins: [],
-};
+}
+}
+;

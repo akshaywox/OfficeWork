@@ -1,11 +1,22 @@
+"use client"; // at the top of the file
+import { useState } from 'react';
+
 import React from 'react';
+import { FaCircleArrowRight } from "react-icons/fa6";
 import Arrow from './Arrow';
+import { HeaderContents } from '@/Contents/HeaderContents';
 
 function Header() {
+
+  const [isHovered, setIsHovered] = useState(false);
+
+
+
+
   return (
     <>
 
-      <header className='flex w-full h-24 bg-white-500 px-10 items-center'>
+      <header className='fixed  w-full h-24 flex bg-white-500 px-10 items-center font-poppins tracking-wide'>
         <nav className='w-full'>
           <div className='flex justify-between'>
             <div className="link link--size-none pointer-events-auto">
@@ -17,35 +28,24 @@ function Header() {
                 </svg>
               </a>
             </div>
-            <div className='flex'>
-              <div className="relative flex h-[50px] w-40 items-center justify-center overflow-hidden bg-white-800 text-white shadow-2xl rounded-2xl transition-all before:absolute before:left-0 before:h-full before:w-full before:bg-black before:transition-transform before:transition-border-radius before:duration-500 before:ease-out before:origin-bottom before:scale-y-0 before:rounded-t-full hover:before:scale-y-100 hover:before:h-400p hover:shadow-black-600">
-                <span className="relative z-10 text-black transition-all duration-500 w-full h-full flex items-center justify-center hover:text-white">Welcome</span>
+            <div className='flex justify-between gap-10 items-center'>
+              {
+                HeaderContents.map((item) => {
+                  return (
+                    <div className="relative flex h-[40px] font-semibold items-center justify-center overflow-hidden  text-white text-xl rounded-3xl transition-all before:absolute before:left-0 before:h-full before:w-full before:bg-black before:transition-transform before:transition-border-radius before:duration-500 before:ease-out before:origin-bottom before:scale-y-0 before:rounded-t-full hover:before:scale-y-100 hover:before:h-400p hover:shadow-black-600">
+                      <span className=" z-10 text-black p-3 px-4 transition-all duration-500 w-full h-full flex items-center justify-center hover:text-white">{item.name}</span>
+                    </div>
+                  )
+                })
+              }
+              <div
+                className="bg-black h-[40px] items-center font-semibold flex space-x-3 px-4 rounded-3xl"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <span className='text-white text-lg '>let's talk about it</span>
+                <Arrow isHovered={isHovered} />
               </div>
-              <div className="relative flex h-[50px] w-40 items-center justify-center overflow-hidden bg-white-800 text-white shadow-2xl rounded-2xl transition-all before:absolute before:left-0 before:h-full before:w-full before:bg-orange-600 before:transition-transform before:transition-border-radius before:duration-500 before:ease-out before:origin-bottom before:scale-y-0 before:rounded-t-full hover:before:scale-y-100 hover:before:h-400p hover:shadow-orange-600">
-                <span className="relative z-10 text-black transition-all duration-500 hover:text-white ">Circle hover</span>
-              </div>
-              <div className="relative flex h-[50px] w-40 items-center justify-center overflow-hidden bg-white-800 text-white shadow-2xl rounded-2xl transition-all before:absolute before:left-0 before:h-full before:w-full before:bg-orange-600 before:transition-transform before:transition-border-radius before:duration-500 before:ease-out before:origin-bottom before:scale-y-0 before:rounded-t-full hover:before:scale-y-100 hover:before:h-400p hover:shadow-orange-600">
-                <span className="relative z-10 text-black transition-all duration-500 hover:text-white">Circle hover</span>
-              </div>
-              <div className='bg-black flex '>
-                {/* <Arrow/> */}
-                <span className='text-white'>let's talk about it</span>
-                <div className=" w-fit bg-white text-gray-800 rounded-full hover:bg-gray-200">
-                  <div className=" transition-all duration-500 hover:animate-rotateAnimation">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10%" height="10%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" >
-                      <path d="M7 7h10v10"></path>
-                      <path d="M7 16 16 7"></path>
-                    </svg>
-                  </div>
-                </div>
-
-              </div>
-              {/* <Arrow/> */}
-
-
-
-
-
             </div>
           </div>
         </nav>
@@ -81,7 +81,8 @@ function Header() {
 
 
 
-      <div
+
+      {/* <div
         className="flex items-center w-full h-6rem pos-fixed left-0 top-0 z-99 bg-white transition-ease-0.4s"
         style={{ transform: 'translate(0px, 0px)' }}
       >
@@ -243,7 +244,7 @@ function Header() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
 
   );

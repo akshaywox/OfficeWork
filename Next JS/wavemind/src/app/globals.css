@@ -23,3 +23,8 @@
     text-wrap: balance;
   }
 }
+
+@font-face {
+  font-family: 'NeueMon'; /* Name your font family */
+  src: url('../Fonts/ppneuemontreal-book.otf'); /* Locate the .ttf file within your directory*/
+}
